@@ -18,7 +18,7 @@ class m190225_103236_create_usuarios_table extends Migration
             'password' => $this->string(60)->notNull(),
             'auth_key' => $this->string(),
             'telefono' => $this->string(),
-            'poblacion' => $this->string(),
+            'email' => $this->string(),
         ]);
     }
 

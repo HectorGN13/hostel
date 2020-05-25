@@ -8,11 +8,11 @@ use Yii;
  * This is the model class for table "usuarios".
  *
  * @property int $id
- * @property string $nombre
+ * @property string $alias
  * @property string $password
- * @property string $auth_key
- * @property string $telefono
- * @property string $poblacion
+ * @property string|null $auth_key
+ * @property string|null $telefono
+ * @property string|null $email
  */
 class Usuarios extends \yii\db\ActiveRecord
 {
@@ -30,8 +30,8 @@ class Usuarios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre', 'password'], 'required'],
-            [['nombre', 'auth_key', 'telefono', 'poblacion'], 'string', 'max' => 255],
+            [['alias', 'password'], 'required'],
+            [['alias', 'auth_key', 'telefono', 'email'], 'string', 'max' => 255],
             [['password'], 'string', 'max' => 60],
         ];
     }
@@ -43,11 +43,11 @@ class Usuarios extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nombre' => 'Nombre',
+            'alias' => 'Alias',
             'password' => 'Password',
             'auth_key' => 'Auth Key',
-            'telefono' => 'Teléfono',
-            'poblacion' => 'Población',
+            'telefono' => 'Telefono',
+            'email' => 'Email',
         ];
     }
 }

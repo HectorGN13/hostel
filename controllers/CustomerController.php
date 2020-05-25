@@ -8,6 +8,8 @@ use app\models\CustomerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\bootstrap4\Alert;
+use yii\filters\AccessControl;
 
 /**
  * CustomerController implements the CRUD actions for Customer model.
@@ -25,6 +27,21 @@ class CustomerController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+            ],
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    // allow authenticated users
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    // everything else is denied by default
+                ],
+                'denyCallback' => function ($rule, $action) {
+                    Yii::$app->session->setFlash('error', 'Esta seccion es solo para usuarios registrados.');
+                    Yii::$app->user->loginRequired();
+                },
             ],
         ];
     }

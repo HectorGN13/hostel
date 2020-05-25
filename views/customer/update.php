@@ -5,9 +5,9 @@ use yii\bootstrap4\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Customer */
 
-$this->title = 'Actualizar Cliente: ' . ($model->name) . ($model->surname);
+$this->title = 'Actualizar Cliente: ' . ($model->name) . ' ' . ($model->surname);
 $this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => ($model->name) . ($model->surname), 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => ($model->name) . ' ' . ($model->surname), 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="customer-update">

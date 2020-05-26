@@ -18,7 +18,7 @@ class CustomerSearch extends Customer
     {
         return [
             [['id'], 'integer'],
-            [['name', 'surname', 'phone_number'], 'safe'],
+            [['name', 'surname', 'phone_number', 'email'], 'safe'],
         ];
     }
 
@@ -63,8 +63,8 @@ class CustomerSearch extends Customer
 
         $query->andFilterWhere(['ilike', 'name', $this->name])
             ->andFilterWhere(['ilike', 'surname', $this->surname])
-            ->andFilterWhere(['ilike', 'phone_number', $this->phone_number]);
-
+            ->andFilterWhere(['ilike', 'phone_number', $this->phone_number])
+            ->andFilterWhere(['ilike', 'email', $this->email]);
         return $dataProvider;
     }
 }

@@ -39,7 +39,7 @@ class CustomerController extends Controller
                     // everything else is denied by default
                 ],
                 'denyCallback' => function ($rule, $action) {
-                    Yii::$app->session->setFlash('error', 'Esta seccion es solo para usuarios registrados.');
+                    Yii::$app->session->setFlash('error', 'Esta sección es solo para usuarios registrados.');
                     Yii::$app->user->loginRequired();
                 },
             ],

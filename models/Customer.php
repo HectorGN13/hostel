@@ -11,6 +11,7 @@ use Yii;
  * @property string $name
  * @property string $surname
  * @property string|null $phone_number
+ * @property string $email
  *
  * @property Reservation[] $reservations
  */
@@ -30,8 +31,9 @@ class Customer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'surname'], 'required'],
-            [['name', 'surname', 'phone_number'], 'string', 'max' => 255],
+            [['name', 'surname', 'email'], 'required'],
+            [['name', 'surname', 'phone_number', 'email'], 'string', 'max' => 255],
+            [['email'], 'unique'],
         ];
     }
 
@@ -45,6 +47,7 @@ class Customer extends \yii\db\ActiveRecord
             'name' => 'Nombre',
             'surname' => 'Apellido',
             'phone_number' => 'Número de teléfono',
+            'email' => 'Email',
         ];
     }
 

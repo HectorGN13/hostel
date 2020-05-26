@@ -48,6 +48,9 @@ class RoomSearch extends Room
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pagesize' => 8,
+            ],
         ]);
 
         $this->load($params);

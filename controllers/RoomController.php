@@ -8,6 +8,7 @@ use app\models\RoomSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 /**
  * RoomController implements the CRUD actions for Room model.
@@ -35,6 +36,7 @@ class RoomController extends Controller
      */
     public function actionIndex()
     {
+        
         $searchModel = new RoomSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

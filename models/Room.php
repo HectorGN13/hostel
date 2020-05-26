@@ -53,14 +53,14 @@ class Room extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'floor' => 'Floor',
-            'room_number' => 'Room Number',
-            'has_conditioner' => 'Has Conditioner',
-            'has_tv' => 'Has Tv',
-            'has_phone' => 'Has Phone',
-            'available_from' => 'Available From',
-            'price_per_night' => 'Price Per Night',
-            'description' => 'Description',
+            'floor' => 'Planta',
+            'room_number' => 'Número de Hab.',
+            'has_conditioner' => 'Aire acondicionado',
+            'has_tv' => 'Televisión',
+            'has_phone' => 'Teléfono',
+            'available_from' => 'Disponible desde',
+            'price_per_night' => 'Precio por noche',
+            'description' => 'Descripción',
         ];
     }
 

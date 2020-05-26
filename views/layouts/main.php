@@ -46,19 +46,18 @@ AppAsset::register($this);
             ['label' => 'Clientes', 'url' => ['/customer/index']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             [
-                'label'=> 'Usuarios',
+                'label'=> !Yii::$app->user->isGuest ? Yii::$app->user->identity->alias : 'Usuarios',
                 'items' => [
                     Yii::$app->user->isGuest ? (
                         ['label' => 'Login', 'url' => ['/site/login']]
                     ) : (
                         Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
-                            'Cerrar sesión (' . Yii::$app->user->identity->alias . ')',
+                            'Cerrar sesión',
                             ['class' => 'dropdown-item'],
                         )
                         . Html::endForm()
                     ),
-                        //EJERCICIO 1b y 3
                     Yii::$app->user->isGuest ? (
                         ['label' => 'Registrarse', 'url' => ['usuarios/registrar']]
                     ) : (

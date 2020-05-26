@@ -53,7 +53,7 @@ AppAsset::register($this);
                     ) : (
                         Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
-                            'Cerrar sesión (' . Yii::$app->user->identity->username . ')',
+                            'Cerrar sesión (' . Yii::$app->user->identity->alias . ')',
                             ['class' => 'dropdown-item'],
                         )
                         . Html::endForm()

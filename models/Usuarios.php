@@ -53,7 +53,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
             [
                 ['password_repeat'],
                 'required',
-                'on' => self::SCENARIO_CREAR
+                'on' => [self::SCENARIO_CREAR, self::SCENARIO_UPDATE],
             ],
             [
                 ['password_repeat'],
@@ -106,7 +106,7 @@ class Usuarios extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->auth_key === $authKey;
     }
 
-    public static function findPorNombre($alias)
+    public static function findPorAlias($alias)
     {
         return static::findOne(['alias' => $alias]);
     }

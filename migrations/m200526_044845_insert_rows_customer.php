@@ -28,7 +28,6 @@ class m200526_044845_insert_rows_customer extends Migration
         $this->delete('{{%customer}}', ['email' => 'tylerdurden@gmail.com']);
         $this->delete('{{%customer}}', ['email' => 'maria.mag@gmail.com']);
         $this->delete('{{%customer}}', ['email' => 'gn.hector@gmail.com']);
-        return false;
     }
 
     /*

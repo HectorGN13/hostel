@@ -16,7 +16,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
+    <!-- <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?> -->
 
     <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>
 

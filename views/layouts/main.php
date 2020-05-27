@@ -42,7 +42,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Habitaciones', 'url' => ['/room/index']],
             ['label' => 'Clientes', 'url' => ['/customer/index']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             [

@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\RoomSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Rooms';
+$this->title = 'Habitaciones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="room-index">

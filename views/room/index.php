@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Room', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Habitación', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -29,14 +29,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'floor',
             'room_number',
+            [
+                'attribute' => 'floor',
+                'format' => ['spellout', '%spellout-ordinal-feminine'],
+            ],
             'has_conditioner:boolean',
             'has_tv:boolean',
             'has_phone:boolean',
-            'available_from',
-            'price_per_night',
+            [
+                'attribute' => 'available_from',
+                'format' => ['date', "d 'de' MMMM, yyyy"],
+            ],
+            [
+                'attribute' => 'price_per_night',
+                'format' => ['Currency', 'EUR'],
+            ],
             //'description:ntext',
+            [
+                //'attribute' => 'Disponible',
+                'format' => 'boolean',
+                'label' => 'Disponible',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

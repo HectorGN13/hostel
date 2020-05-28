@@ -36,10 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'room_number',
             [
                 'attribute' => 'floor',
-                // 'value' => function ($model, $key) {
-                //     return Yii::t('app', '{n, spellout, %digits-ordinal-feminine}', ['n' => $model->floor]);
-                // }
-                'format' => ['spellout', '%spellout-ordinal-feminine'],
+                'value' => function ($model, $key) {
+                    $formatter = new NumberFormatter('es', NumberFormatter::SPELLOUT);
+                    $formatter->setTextAttribute(NumberFormatter::DEFAULT_RULESET, '%spellout-ordinal-feminine');
+                    return ucfirst($formatter->format($model->floor));
+                }
+                //'format' => ['spellout', '%spellout-ordinal-feminine'],
             ],
             'has_conditioner:boolean',
             'has_tv:boolean',
@@ -55,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'description:ntext',
             [
                 'attribute' => 'disponible',
-                'format' => ['boolean', ['x', '√']],
+                'format' => ['boolean'],
                 'label' => 'Disponible',
             ],
 

@@ -1,5 +1,6 @@
 <?php
 
+use app\models\RoomSearch;
 use yii\bootstrap4\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -19,8 +20,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Crear Habitación', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php Pjax::begin(); ?>
-    <?php echo $this->render('indexFiltered', ['model' => $searchModel]); ?>
+    <?php Pjax::begin();?>
+
+    <?php $indexFilter = new RoomSearch(); ?>
+     
+    <?php //echo $this->render('indexFiltered', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -32,7 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'room_number',
             [
                 'attribute' => 'floor',
-                'format' => ['spellout', 'SOF'],
+                // 'value' => function ($model, $key) {
+                //     return Yii::t('app', '{n, spellout, %digits-ordinal-feminine}', ['n' => $model->floor]);
+                // }
+                'format' => ['spellout', '%spellout-ordinal-feminine'],
             ],
             'has_conditioner:boolean',
             'has_tv:boolean',
@@ -47,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'description:ntext',
             [
-                //'attribute' => 'Disponible',
+                'attribute' => 'disponible',
                 'format' => ['boolean', ['x', '√']],
                 'label' => 'Disponible',
             ],

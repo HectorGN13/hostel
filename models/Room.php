@@ -21,6 +21,8 @@ use Yii;
  */
 class Room extends \yii\db\ActiveRecord
 {
+    private $_disponible = null;
+
     /**
      * {@inheritdoc}
      */
@@ -62,6 +64,30 @@ class Room extends \yii\db\ActiveRecord
             'price_per_night' => 'Precio por noche',
             'description' => 'Descripción',
         ];
+    }
+
+    public function setDisponible($disponible)
+    {
+        $this->_disponible = $disponible;
+    }
+
+    public function getDisponible()
+    {
+        if ($this->_disponible === null && !$this->isNewRecord) {
+            $this->setDisponible($this->estaDisponible());
+        }
+        return $this->_disponible;
+    }
+
+    public function estaDisponible()
+    {
+        $result = false;
+        $fecha_actual = date('dd-mm-YYYY', time()) ;
+        $fecha_disponible = $this->available_from;
+        if ($fecha_disponible < $fecha_actual) {
+            $result = true;
+        }
+        return $result;
     }
 
     /**

@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('indexFiltered', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'room_number',
             [
                 'attribute' => 'floor',
-                'format' => ['spellout', '%spellout-ordinal-feminine'],
+                'format' => ['spellout', 'SOF'],
             ],
             'has_conditioner:boolean',
             'has_tv:boolean',
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'description:ntext',
             [
                 //'attribute' => 'Disponible',
-                'format' => 'boolean',
+                'format' => ['boolean', ['x', '√']],
                 'label' => 'Disponible',
             ],
 

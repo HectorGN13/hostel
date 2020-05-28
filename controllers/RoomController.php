@@ -126,4 +126,30 @@ class RoomController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionIndexFiltered()
+    {
+        $query = Room::find();
+        $searchFilter = [
+                'floor' => ['operator' => '', 'value' => ''],
+                'room_number' => ['operator' => '', 'value' => ''],
+                'price_per_day' => ['operator' => '', 'value' => ''],
+        ];
+
+        if (isset($_POST['SearchFilter'])) {
+            $fieldsList = ['floor', 'room_number', 'price_per_day'];
+            foreach ($fieldsList as $field) {
+                $fieldOperator = $_POST['SearchFilter'][$field]['operator'];
+                $fieldValue = $_POST['SearchFileter'][$field]['value'];
+
+                $searchFilter[$field] = ['operator' => $fieldOperator, 'value' => $fieldValue];
+                if ($fieldValue != '') {
+                    $query->andWhere([$fieldOperator, $field, $fieldValue]);
+                }
+            }
+        }
+
+        $rooms = $query->all();
+        return $this->render('indexFiltered', ['rooms' => $rooms, 'searchFilter' => $searchFilter]);
+    }
 }

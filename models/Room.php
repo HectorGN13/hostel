@@ -74,20 +74,26 @@ class Room extends \yii\db\ActiveRecord
     public function getDisponible()
     {
         if ($this->_disponible === null && !$this->isNewRecord) {
-            $this->setDisponible($this->estaDisponible());
+            $this->setDisponible(static::estaDisponible());
         }
         return $this->_disponible;
     }
 
-    public function estaDisponible()
+    public static function estaDisponible()
     {
-        $result = false;
-        $fecha_actual = date('dd-mm-YYYY', time()) ;
-        $fecha_disponible = $this->available_from;
-        if ($fecha_disponible < $fecha_actual) {
-            $result = true;
-        }
-        return $result;
+        // $result = false;
+        // $fecha_actual = date('dd-mm-YYYY', time()) ;
+        // $fecha_disponible = $this->available_from;
+        // if ($fecha_disponible < $fecha_actual) {
+        //     $result = true;
+        // }
+        // return $result;
+
+        return static::find()
+        ->select('room.*, (CASE WHEN available_from < CURRENT_DATE 
+          THEN 1 
+          ELSE 0 
+         END) AS disponible');
     }
 
     /**

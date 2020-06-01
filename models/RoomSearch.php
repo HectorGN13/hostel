@@ -42,7 +42,7 @@ class RoomSearch extends Room
      */
     public function search($params)
     {
-        $query = Room::find();
+        $query = Room::estaDisponible();
 
         // add conditions that should always apply here
 
